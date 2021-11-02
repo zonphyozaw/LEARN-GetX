@@ -47,13 +47,13 @@ class GetxSnackbar extends StatelessWidget {
                 // snackbarStatus: (val){
                 //   print(val);
                 // }
-                userInputForm: Form(child: Row(
-                  children: const [
-                    Expanded(
-                      child: TextField(),
-                    )
-                  ],
-                ))
+                // userInputForm: Form(child: Row(
+                //   children: const [
+                //     Expanded(
+                //       child: TextField(),
+                //     )
+                //   ],
+                // ))
             );},
           child: const Text("SnackBar"),
         ),
