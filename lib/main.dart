@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:learn_getx/snack_bar.dart';
+import 'package:learn_getx/bottom_sheet.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const GetxSnackbar(),
+      home: const BottomSheetX(),
     );
   }
 }

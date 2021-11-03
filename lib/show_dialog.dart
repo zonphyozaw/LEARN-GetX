@@ -1,9 +1,10 @@
 import 'package:flutter/animation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class GetxSnackbar extends StatelessWidget {
-  const GetxSnackbar({Key? key}) : super(key: key);
+class ShowDialog extends StatelessWidget {
+  const ShowDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,51 +12,45 @@ class GetxSnackbar extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: (){
-            Get.snackbar(
-                "title",
-                "message",
-                snackPosition: SnackPosition.BOTTOM,
-                // titleText: Text("zpz"),
-                // messageText: Text("hello world",style: TextStyle(color: Colors.blue),
-                //colorText: Colors.redAccent,
-                //borderRadius: 30,
-                margin: const EdgeInsets.all(20),
-                padding: const EdgeInsets.all(20),
-                //animationDuration: Duration(milliseconds: 2000),
-                backgroundGradient: const LinearGradient(colors: [Colors.purple,Colors.green]),
-                // borderColor: Colors.black26,borderWidth: 2,
-                // boxShadows: [
-                //   BoxShadow(color: Colors.blueGrey,offset: Offset(20,30),spreadRadius: 20,blurRadius: 30)
-                // ]
-                isDismissible: true,
-                dismissDirection: SnackDismissDirection.HORIZONTAL,
-                forwardAnimationCurve: Curves.bounceInOut,
-                duration: const Duration(milliseconds: 8000),
-                icon: const Icon(Icons.wifi_off,color: Colors.redAccent,),
-                shouldIconPulse: true,
-                //leftBarIndicatorColor: Colors.blue
-                //mainButton: TextButton(onPressed: (){}, child: Text("click"),),
-                // onTap: (val){
-                //   print("Snack Bar Click");
-                // },
-                // overlayBlur: 10,
-                // overlayColor: Colors.green
-                //showProgressIndicator: true,
-                //progressIndicatorBackgroundColor: Colors.deepOrange
-                //progressIndicatorValueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                //reverseAnimationCurve: Curves.bounceInOut,
-                // snackbarStatus: (val){
-                //   print(val);
-                // }
-                // userInputForm: Form(child: Row(
-                //   children: const [
-                //     Expanded(
-                //       child: TextField(),
-                //     )
-                //   ],
-                // ))
-            );},
-          child: const Text("SnackBar"),
+            Get.defaultDialog(
+              title: "Dialog",
+              titleStyle: TextStyle(color: Colors.green),
+              middleText: "This is GetX dialog middle text",
+              middleTextStyle: TextStyle(fontWeight: FontWeight.bold),
+              backgroundColor: Colors.amberAccent,
+              radius: 10,
+              content: Row(
+                children: const [
+                 // CircularProgressIndicator(),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  //Text("this is GetX dialog box text expanded"),
+                  //ကိုလိုချင်တဲ့ အတိုင်းတာတစ်ခုထဲကို ဝင်အောင်လုပ်မယ်ဆိုရင် parent widget ထဲက child ကို Expanded နဲ့ ငုံပေးရတယ် မငုံရင် အပြင်ကိုကျော်တက်သွားမယ်
+                  Expanded(child: Text("this is GetX dialog box text expanded"),)
+                ],
+              ),
+              // textCancel: "cancel",
+              // cancelTextColor: Colors.green,
+              // onCancel: (){print("cancel");},
+              // cancel: Text("cancel",style: TextStyle(fontWeight: FontWeight.bold),),
+              //
+              // textConfirm: "confirm",
+              // confirmTextColor: Colors.white,
+              // onConfirm: (){print("confirm");},
+              // confirm: Text("confirm",style: TextStyle(fontWeight: FontWeight.bold),),
+              // buttonColor: Colors.green,
+              actions: [
+                ElevatedButton(onPressed: () { Get.back(); },
+                child: Text("OK"),),
+                ElevatedButton(onPressed: () { print("action button Cancel press"); },
+                  child: Text("CANCEL"),)
+              ],
+              // other screen position ကိုထောက်ပီး true ဆိုရင် ပိတ်နိုင်ပါတယ် false ဆိုရင်ပိတ်လို့မရပါ
+              barrierDismissible: false,
+            );
+            },
+          child: const Text("Show Dialog"),
         ),
       )
     );
