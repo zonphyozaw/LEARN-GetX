@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:learn_getx/bottom_sheet.dart';
+import 'package:learn_getx/route_navigation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +27,17 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const BottomSheetX(),
+      getPages: [
+        GetPage(name: "/routenav", page: ()=> const RouteNavigation(),transition: Transition.leftToRight ),
+      ],
+      //unknownRoute ကိုပြန်ခေါ်ချင်ရင်တော့ /x route နဲ့ခေါ်ပါတယ်
+      unknownRoute:  GetPage(name: "/unknown", page: () => const RouteNavigation() ,),
+      home: Center(
+        child:ElevatedButton(
+          onPressed: () { Get.toNamed("/routenav?name=zpz&content=Flutter GetX"); },
+          child: Text("click me"),
+        )
+      ),
     );
   }
 }

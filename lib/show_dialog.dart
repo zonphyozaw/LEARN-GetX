@@ -9,6 +9,9 @@ class ShowDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: const Text("RouteNavigation"),
+        ),
       body: Center(
         child: ElevatedButton(
           onPressed: (){
@@ -27,7 +30,7 @@ class ShowDialog extends StatelessWidget {
                   ),
                   //Text("this is GetX dialog box text expanded"),
                   //ကိုလိုချင်တဲ့ အတိုင်းတာတစ်ခုထဲကို ဝင်အောင်လုပ်မယ်ဆိုရင် parent widget ထဲက child ကို Expanded နဲ့ ငုံပေးရတယ် မငုံရင် အပြင်ကိုကျော်တက်သွားမယ်
-                  Expanded(child: Text("this is GetX dialog box text expanded"),)
+                  const Expanded(child: Text("this is GetX dialog box text expanded"),),
                 ],
               ),
               // textCancel: "cancel",
