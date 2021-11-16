@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:learn_getx/route_navigation.dart';
+import 'package:learn_getx/student/student_controller.dart';
+import 'student/student.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  //var studen = Student();
+  ///final student = Student(name: "zonphyozaw",age: 25).obs;
+  StudentController studentController = Get.put(StudentController());
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -32,11 +35,22 @@ class MyApp extends StatelessWidget {
       ],
       //unknownRoute ကိုပြန်ခေါ်ချင်ရင်တော့ /x route နဲ့ခေါ်ပါတယ်
       unknownRoute:  GetPage(name: "/unknown", page: () => const RouteNavigation() ,),
-      home: Center(
-        child:ElevatedButton(
-          onPressed: () { Get.toNamed("/routenav?name=zpz&content=Flutter GetX"); },
-          child: Text("click me"),
-        )
+      home: Scaffold(
+        body: Center(
+          child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () { Get.toNamed("/routenav?name=zpz&content=Flutter GetX"); },
+                child: Text("click me"),
+              ),
+              Obx(() => Text("${studentController.student.value.name}")),
+              ElevatedButton(onPressed: (){
+                studentController.convertToUpperCase();
+              }, child: const Text("change")),
+            ],
+          )
+        ),
       ),
     );
   }
